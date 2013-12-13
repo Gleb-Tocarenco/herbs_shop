@@ -1,0 +1,12 @@
+{% extends "backend/base_admin.html" %}
+{% block title%} News list {%endblock%}
+{% block content%}
+	
+	{% for n in news%}
+		<div><a href="{% url 'article_page' n.id %}">{{n.title}}</a></div>
+		<div>{{n.date}}</div>
+		<pre>{{n.post|slice:":255"}}...</pre>
+		<a href="{% url 'article_page' n.id %}">more</a>
+		
+	{% endfor %}
+{% endblock %}

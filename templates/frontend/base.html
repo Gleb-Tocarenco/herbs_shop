@@ -1,0 +1,120 @@
+<!Doctype html>
+<html lang="en">
+<head>
+		<meta name='viewport' content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/bootstrap/css/bootstrap.css">
+		<!--<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}">-->
+
+		<script src="{{ STATIC_URL }}jquery/jquery.js"></script>
+		<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" , src = "{{ STATIC_URL }}js/cart_plus_minus.js"></script>
+		<script type="text/javascript" src = "{{ STATIC_URL }}js/form_validator.js"></script>
+		<script type="text/javascript" src = "{{ STATIC_URL }}jquery/jquery.validate.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toogle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Herbs Shop</a>
+		</div>
+
+		<div class="collapse navbar-collapse pull-left" id="#bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						{% for category in categories %}
+						<li>
+							<a href="{% url 'product_list_by_category' category %}">
+								{{category}}
+							</a>
+						</li>
+						{% endfor %}
+
+					</ul>
+				</li>
+				<li><a href="{% url 'special_offers'%}">Special offers</a></li>
+				<li><a href="{% url 'news' %}">news&events</a></li>
+				<li><a href="{% url 'recipies' %}">recipies</a></li>
+				<li><a href="{% url 'contacts' %}">Contacts</a></li>
+				<li><a href="{% url 'show_cart_page' %}">Cart <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+				</ul>
+
+		</div>
+	</nav>
+
+	<div id = "mainPageCarousel" class="carousel slide" >
+
+		<ol class="carousel-indicators">
+			<li data-target="#mainPageCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#mainPageCarousel" data-slide-to="1" ></li>
+			<li data-target="#mainPageCarousel" data-slide-to="2" ></li>
+		</ol>
+
+		<div class="carousel-inner">
+			
+			<div class="item active">
+				<div class="container">
+					<img src="{{ STATIC_URL }}images/images1.jpeg" style=" width:100%; max-width:900px max-height:600px;">
+					<div class = "carousel-caption">
+						<h1>Product 1</h1>
+						<p>Here goes product description</p>
+						<p><a href="" class="btn btn-large btn-primary">Add to cart</a></p>
+					</div>
+				</div>
+			</div>
+			
+
+			
+			<div class="item">
+				
+				<div class="container">
+					<img src="{{ STATIC_URL }}images/kitties-in-teacup1.jpg" style=" width:100%; max-width:900px; max-height:600px">
+					<div class = "carousel-caption">
+						<h1>Product 2</h1>
+						<p>Here goes product description</p>
+						<p><a href="" class="btn btn-large btn-primary">Add to cart</a></p>
+					</div>
+				</div>
+			</div>
+			
+
+			
+			<div class="item"> 
+				
+				<div class="container">
+					<img src="{{ STATIC_URL}}images/images.jpeg" style=" width:100%; max-width:900px; max-height:600px">
+					<div class = "carousel-caption">
+						<h1>Product 3</h1>
+						<p>Here goes product description</p>
+						<p><a href="" class="btn btn-large btn-primary">Add to cart</a></p>
+					</div>
+				</div>
+
+			</div>
+			
+		</div>
+
+		
+
+		
+
+		<a class="left carousel-control" href="#mainPageCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+
+		<a class="right carousel-control" href="#mainPageCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+	
+		{% block content %}{% endblock %}
+	
+</body>
+</html>

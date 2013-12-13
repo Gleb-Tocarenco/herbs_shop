@@ -1,0 +1,13 @@
+{% extends "frontend/base.html" %}
+{% block content%}
+	<div class="container">
+		<div class="text-center">
+			<h4>{{recipy.title}}</h4>
+		</div>
+
+		<pre>{{recipy.post}}</pre>
+		<div class="pull-right">{{recipy.date|date:"j F Y"}}</div>
+
+	</div>
+
+{% endblock %}

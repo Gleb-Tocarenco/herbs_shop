@@ -1,0 +1,24 @@
+{% extends "backend/base_admin.html" %}
+
+{% block content %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Message Title</th>
+				<th>Person name</th>
+				<th>email</th>
+				<th>phone</th>
+			</tr>
+		</thead>
+		<tbody>
+	{% for message in messages %}
+		<tr>
+			<td><a href="{% url 'message' message.id %}">{{message.title}}</a></td>
+			<td>{{message.name}}</td>
+			<td>{{message.email}}</td>
+			<td>{{message.phone}}</td>
+		</tr>
+	{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

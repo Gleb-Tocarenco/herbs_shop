@@ -1,0 +1,9 @@
+{% extends "backend/base_admin.html" %}
+
+{% block content %}
+	<div>{{message.title}}</div>
+	<pre>{{message.message}}</pre>
+	<div><strong>Client name: </strong>{{message.name}}</div>
+	<div><strong>Client phone: </strong>{{message.phone}}</div>
+	<div><strong>Client email: </strong> {{message.email}}</div>
+{% endblock %}

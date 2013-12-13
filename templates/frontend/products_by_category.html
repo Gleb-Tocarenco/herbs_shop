@@ -1,0 +1,44 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+	
+	<div class="container">
+		<div class="row">
+			{% for product in products %}
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				
+				<a href="{% url 'product_page_front' product.product_name %}">
+					<h4 class="text-center">{{product.product_name}}</h4>
+				</a>
+				<img src="{{product.image.url}}" width="220px" height = "220px" class="img-circle">
+				{{product.description|slice:"255"}}
+				<div>
+
+					{{product.price}} lei
+				</div>
+				<form method="post" role="form">{% csrf_token %}
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="text"  value="1" name="quantity" class="form-control">
+						</div>
+						<input type="hidden" name="price" value="{{product.price}}">
+						<input type="hidden" name="product" value="{{product.product_name}}">
+						<div class="col-sm-6">
+							<button class="btn btn-primary">add to cart</button>
+						</div>
+
+					</div>
+					
+					
+				</form>
+					
+					
+
+			</div>
+
+			{% endfor %}
+		</div>
+		<br>
+	</div>
+		
+	
+{% endblock %}

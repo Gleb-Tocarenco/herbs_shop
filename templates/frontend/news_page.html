@@ -1,0 +1,10 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+<div class="container">
+	<h4>{{news.title}}</h4>
+	<pre>{{news.post}}</pre>
+	<div>{{news.date|date:"j F Y"}}</div>
+	<br>
+</div>
+		
+{% endblock %}

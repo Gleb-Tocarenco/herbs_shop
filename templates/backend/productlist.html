@@ -1,0 +1,41 @@
+{% extends "backend/base_admin.html" %}
+{% block content%}
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Product name</th>
+				<th>Category name</th>
+				<th>price</th>
+				<th>availability</th>
+				<th>discount</th>
+				<th>discount amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+			<tr>
+				<td><a href="{% url 'product_page' product.id %}">{{product.product_name}}</td>
+				<td>{{product.category_name}}</td>
+				<td>{{product.price}}</td>
+				<td>
+					{% if product.avalability %}
+						<span class="glyphicon glyphicon-ok-sign"></span>
+					{% elif not product.avalability %}
+						<span class="glyphicon glyphicon-minus-sign"></span>
+					{% endif %}
+				</td>	
+				<td>
+					{% if product.discount %}
+						<span class="glyphicon glyphicon-ok-sign"></span>
+					{% elif not product.discount %}
+						<span class="glyphicon glyphicon-minus-sign"></span>
+					{% endif %}
+				</td>
+				<td>{{product.discount_amt}}</td>
+			</tr>
+				{% endfor %}
+			
+		</tbody>
+	</table>
+{% endblock %}

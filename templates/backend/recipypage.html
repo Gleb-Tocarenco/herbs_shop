@@ -1,0 +1,9 @@
+{% extends "backend/base_admin.html" %}
+{% block content%}
+	<div>{{recipy.title}}</div>
+	<pre>{{recipy.post}}</pre>
+	<form method='post'> {% csrf_token %}
+			<input type="submit" value="edit" name="submit">
+			<input type='submit' name='submit' value='delete'>
+	</form>
+{% endblock %}

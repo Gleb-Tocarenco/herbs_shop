@@ -1,0 +1,71 @@
+{% extends "frontend/base.html"%}
+{% block content %}
+<div class="container">
+	{% if not orders %}
+	<p>Your cart is empty</p>
+{% else %}
+	<table  class="table">
+		<tr>
+			<th>product name</th>
+			<th>price</th>
+			<th>quantity</th>
+			<th></th>
+			<th></th>
+			<th>total</th>
+		</tr>
+		{% for order in orders %}
+		<tr class="table_data">
+			
+			<td>{{order.product}}</td>
+			<td>{{order.price}}</td>
+			<td>
+				<form method = 'post' role="form" id = "form"> {% csrf_token %}
+					<div class="row">
+						<div class="col-xs-3">
+							<input type = 'text' class="form-control" name='quantity' value='{{order.quantity}}' data-price ="{{order.price}}"/>
+							<input type = 'hidden' name = 'product' value = "{{order.product}}"/>
+						</div>
+
+						<div class="col-xs-2">
+							<button type = "button" class	="button_plus">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
+						</div>
+
+						<div class="col-xs-2">
+							<button type = "button" class="button_minus">
+								<span class="glyphicon glyphicon-minus"></span>
+							</button>
+						</div>
+						
+					</div>
+					
+			</td>
+			<td>
+				<button type="submit"  name = "submit" value="Update" class="btn btn-warning">Update</button>
+				
+				</form>
+			</td>
+			<td>
+				<form method ='post'> {% csrf_token %}
+					<input type='hidden' name='product' value='{{order.product}}' />
+					<button type="submit" name="submit" value="Delete" class="btn btn-danger">Delete</button>
+			
+			<td id="cart_sub_total">{{order.total}}</td>
+			
+		</tr>
+		{% endfor %}
+
+	</table>
+
+	<div class="pull-right" >Cart total: <span id = "cart_total">{{cart_sum}}</span></div>
+	<br>
+	<a href="{% url 'checkout' %}" class="pull-right">Checkout</a>
+	<br>
+	<br>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

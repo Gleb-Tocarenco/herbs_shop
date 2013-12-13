@@ -1,0 +1,30 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+
+<div class="container">
+	<div>Prodcut name: {{product.product_name}}</div>
+	<div>Product price: {{product.price}}</div>
+	<form method = 'post' role="form"> {% csrf_token %}
+		<div class="row">
+			{% load admin_page_filters %}
+		{% for field in form%}
+			<div class='col-sm-4'>
+				{{field|addcss:"form-control"}}
+			</div>
+			
+		{% endfor %}
+		</div>
+		
+		<input id="id_product" name="product" type="hidden" value = "{{product.product_name}}"/>
+		<input id= "product_price", name="price", type = "hidden", value = "{{product.price}}">
+		<button type="submit" class="btn btn-primary">add to cart</button>
+	</form>
+	{% if product.image %}
+	<img src="{{product.image.url}}" width="200px" height = "200px">
+	
+	{% endif %}
+
+</div>
+	
+
+{% endblock %}

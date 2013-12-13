@@ -1,0 +1,10 @@
+{% extends "backend/base_admin.html" %}
+{% block content %}
+	{% for recipy in recipies%}
+		<div><a href="{% url 'recipy_page' recipy.id %}">{{recipy.title}}</a></div>
+		<div>{{recipy.date}}</div>
+		<pre>{{recipy.post|slice:":255"}}</pre>
+		<br>
+
+	{% endfor %}
+{% endblock %}

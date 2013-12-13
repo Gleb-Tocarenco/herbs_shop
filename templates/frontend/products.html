@@ -1,0 +1,10 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+	{% for product in products %}
+	<div class="container">
+		<a href="{% url 'product_page_front' product.product_name %}">
+			{{product.product_name}}
+		</a>
+	</div>
+	{% endfor %}
+{% endblock %}

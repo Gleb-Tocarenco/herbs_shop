@@ -1,0 +1,39 @@
+{% extends "backend/base_admin.html" %}
+{% block title%} Order page {%endblock%}
+{% block content %}
+	<table class="table">
+		<tr>
+			<th>id</th>
+			<th>product name</th>
+			<th>price</th>
+			<th>category</th>
+			<th>availability</th>
+			<th>discount</th>
+			<th>discount amount</th>
+			<th>edit</th>
+			<th>delete</th>
+		</tr>
+		<tr>
+			<td>{{product.id}}</td>
+			<td>{{product.product_name}}</td>
+			<td>{{product.price}}</td>
+			<td>{{product.category_name}}</td>
+			<td>{{product.avalability}}</td>
+			<td>{{product.discount}}</td>
+			<td>{{product.discount_amt}}</td>
+			<td>
+				<form method='post'> {% csrf_token %}
+					<button class="btn btn-warning" type="submit" value="edit" name="submit">Edit</button>
+					
+				</form>
+			</td>
+			<td>
+				<form method='post'> {% csrf_token %}
+					<button class="btn btn-danger" type="submit" value="delete" name="submit">Delete</button>
+				</form>
+			</td>
+		</tr>
+		
+	</table>
+	
+{% endblock %}

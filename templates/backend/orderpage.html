@@ -1,0 +1,53 @@
+{% extends "backend/base_admin.html" %}
+{% block title%} Order page {%endblock%}
+{% block content %}
+
+<h3>Client Details</h3>
+<table  class="table">
+	<thead>
+		<th>Client name</th>
+		<th>Client phone</th>
+		<th>Cleint email</th>
+		<th>Served</th>
+		<th>Order Date</th>
+	</thead>
+	<tbody>
+		<td>{{order_details.client_name}}</td>
+		<td>{{order_details.client_phone}}</td>
+		<td>{{order_details.client_email}}</td>
+		<td>
+			{% if order_details.served %}
+				<span class="glyphicon glyphicon-ok-sign"></span>
+			{% elif not order_details.served%}
+				<span class="glyphicon glyphicon-minus-sign"></span>
+			{% endif %}
+		
+		</td>
+		<td>{{order_details.order_date}}</td>
+	</tbody>
+</table>
+	
+	<h3>Order Details</h3>
+	<table class="table">
+		<thead>
+			<th>Product name</th>
+			<th>Quantity</th>
+		</thead>
+		<tbody>
+			{% for o in order%}
+			<tr>
+				<td>{{o.product}}</td>
+				<td>{{o.quantity}}</td>
+			{% endfor %}
+		</tr>
+		</tbody>
+		
+	</table>
+	
+	
+	
+	<form method='post'> {% csrf_token %}
+		
+		<button class="btn btn-primary" type='submit' name='serve' value='serve'>Serve order</button>
+	</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+	<div class="container">
+		{% for recipy in recipies %}
+
+		<div class="text-center">
+			<h4>
+				<a href="{% url 'front_recipy_page' recipy.id %}">{{recipy.title}}</a>
+			</h4>
+		</div>
+		<pre>
+			
+			<div>{{recipy.post}}</div>
+			
+		</pre>
+		<div class="pull-right">{{recipy.date|date:"j F Y"}}</div>
+		<br>
+		<br>
+		{% endfor %}
+	</div>
+	
+{% endblock %}

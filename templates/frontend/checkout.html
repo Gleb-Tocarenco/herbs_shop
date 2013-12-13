@@ -1,0 +1,28 @@
+{% extends "frontend/base.html" %}
+{% block content%}
+<div class="container">
+	<h1>
+		Checkout form
+	</h1>
+
+	<form method='post' role="form"> {% csrf_token %}
+		{% load admin_page_filters %}
+
+		{% for field in form %}
+			<div class="form-group">
+				{{field.label_tag}}
+				{{field.errors}}
+
+				<div class="row">
+					<div class="col-xs-6">{{field|addcss:"form-control"}}</div>
+
+				</div>
+			</div>
+
+		{% endfor %}
+		
+		<button class="btn btn-primary" type="submit" value="submit">Add order</button>
+	</form>
+</div>
+	
+{% endblock%}

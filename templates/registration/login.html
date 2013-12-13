@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name='viewport' content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/bootstrap/css/bootstrap.css">
+		<!--<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}">-->
+
+		<script src="{{ STATIC_URL }}jquery/jquery.js"></script>
+		<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+		
+	</head>
+<body>
+	
+
+	{% if form.errors %}
+		<p>Username and password didn't match</p>
+	{% endif %}
+	{% load admin_page_filters %}
+	<div class="container login">
+		<div class="row">
+			<div class="center span4 well">
+				<h1>User Login</h1>
+				<form role="form" method='post'> {% csrf_token %}
+				<div class="group-form">
+					<p><label for="id_username">Username:</label>{{form.username|addcss:"form-control span4"}}</p>
+					<p><label for="id_password">Password:</label>{{form.password|addcss:"form-control span4"}}</p>
+					<input type="hidden" name="next" value="/admin_page/productlist"/>
+					<button class="btn btn-primary" type="sybmit" name="login" value="login">Login</button>
+				
+				</div>
+			
+		</form>
+			</div>
+		</div>
+	</div>
+		
+			
+		
+</body>
+</html>

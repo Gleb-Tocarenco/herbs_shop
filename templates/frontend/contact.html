@@ -1,0 +1,25 @@
+{% extends "frontend/base.html" %}
+{% block content %}
+<div class="container">
+	<h1>{{message}}</h1>
+		<h1>Contact Form</h1>
+		{% load admin_page_filters %}
+		<form method = 'post' role="form"> {% csrf_token %}
+
+			{% for field in form%}
+			<div class="form-group">
+				{{field.label_tag}}
+				{{field.errors}}
+				<div class="row">
+					{{field|addcss:"form-control"}}
+				</div>
+				
+				
+			</div>
+			{% endfor%}
+			
+			<button type="submit" value = "submit" class="btn btn-primary">Leave message</button>
+		</form>
+</div>
+
+{% endblock %}
