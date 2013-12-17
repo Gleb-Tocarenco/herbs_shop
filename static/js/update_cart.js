@@ -6,8 +6,12 @@ $(document).ready(function(){
 			type: 'POST',
 			data: form.serialize(),
 			success: function(result) {
+
 				
-			}
+			},
+			error: function(request, errorType, errorMessage){},	
+
+			timeout: 3000
 		});
 	});
 });
